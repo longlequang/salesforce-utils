@@ -17,3 +17,17 @@ Link ☞ [Download here](https://marketplace.visualstudio.com/items?itemName=eam
 Link ☞ [Download here](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
 
 ![Bracket Pair Colorizer](https://github.com/CoenraadS/BracketPair/raw/master/images/example.png)
+
+#### 4. Markdown All in One
+> Support for making document more quickly and easier in Markdown format.
+
+Link ☞ [Download here](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+
+![Markdown All in One](https://github.com/yzhang-gh/vscode-markdown/raw/master/images/gifs/toggle-bold.gif)
+
+#### 5. Code Spell Checker
+> This extension will help you avoid some spelling error.
+
+Link ☞ [Download here](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+
+![Code Spell Checker](https://raw.githubusercontent.com/streetsidesoftware/vscode-spell-checker/master/packages/client/images/example.gif)
