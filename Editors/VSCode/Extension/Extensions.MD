@@ -10,3 +10,10 @@ Link ☞ [Download here](https://marketplace.visualstudio.com/items?itemName=for
 Link ☞ [Download here](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
 ![GitLens](https://raw.githubusercontent.com/eamodio/vscode-gitlens/master/images/docs/gitlens-preview.gif)
+
+#### 3. Bracket Pair Colorizer
+> This extension allows matching brackets to be identified with colours. The user can define which characters to match, and which colours to use.
+
+Link ☞ [Download here](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
+
+![Bracket Pair Colorizer](https://github.com/CoenraadS/BracketPair/raw/master/images/example.png)
