@@ -1,0 +1,70 @@
+<project name="Move CORE to TEM" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <!-- Setting default value for username, password and session id properties to empty string 
+         so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
+         will be treated literally.
+    -->
+
+    <!-- CORE -->
+    <condition property="sf.cusername" value=""> <not> <isset property="sf.cusername"/> </not> </condition>
+    <condition property="sf.cpassword" value=""> <not> <isset property="sf.cpassword"/> </not> </condition>
+    <condition property="sf.csessionId" value=""> <not> <isset property="sf.csessionId"/> </not> </condition>
+
+    <!-- TEM -->
+    <condition property="sf.tusername" value=""> <not> <isset property="sf.tusername"/> </not> </condition>
+    <condition property="sf.tpassword" value=""> <not> <isset property="sf.tpassword"/> </not> </condition>
+    <condition property="sf.tsessionId" value=""> <not> <isset property="sf.tsessionId"/> </not> </condition>
+
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="env.ANT_HOME/lib/ant-salesforce.jar" />        	
+        </classpath>
+    </taskdef>
+  
+     <!-- OPERATION ON CORE -->
+     <!-- Retrieve an unpackaged set of metadata from CORE -->
+    <!-- The file unpackaged/package.xml lists what is to be retrieved -->
+    <!--  ant -verbose retrieveCoreUnpackaged -->
+    <target name="retrieveCoreUnpackaged">
+      <mkdir dir="retrieveCoreUnpackaged"/>
+      <!-- Retrieve the contents into another directory -->
+      <sf:retrieve 
+        username="${sf.cusername}" 
+        password="${sf.cpassword}" 
+        sessionId="${sf.csessionId}"
+        serverurl="${sf.cserverurl}" 
+        maxPoll="${sf.maxPoll}" 
+        retrieveTarget="retrieveCoreUnpackaged" 
+        unpackaged="coreUnpackaged/package.xml"/>
+    </target>
+
+    <target name="deploy_number_backlog">
+        <mkdir dir="number_backlog_short_desc"/>
+        <!-- Retrieve the contents into another directory -->
+        <sf:retrieve 
+        username="${sf.cusername}" 
+        password="${sf.cpassword}" 
+        sessionId="${sf.csessionId}"
+        serverurl="${sf.cserverurl}" 
+        maxPoll="${sf.maxPoll}" 
+        retrieveTarget="retrieveCoreTempATLUnpackaged" 
+        unpackaged="coreATLTempUnpackaged/package.xml"/>
+    </target>
+
+    <target name="deployATLTempObjectToCoreSandbox">
+        <sf:deploy 
+            username="${sf.csbusername}" 
+            password="${sf.csbpassword}" 
+            sessionId="${sf.csessionId}" 
+            serverurl="${sf.csbserverurl}"
+            deployroot="deployTempObject" 
+            pollWaitMillis="10000"
+            maxPoll="100" 
+            testLevel="NoTestRun">
+            
+        </sf:deploy>
+    </target>
+</project>
